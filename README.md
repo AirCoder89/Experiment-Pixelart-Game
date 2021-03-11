@@ -1,6 +1,6 @@
 # Hybrid ECS Pixelart Game [Unity Prototype]
 
-And I would like to introduce my architecture I called "VCS-AMC" (View Component System-Application Model Controller).
+I would like to introduce my architecture I called "VCS-AMC" (View Component System-Application Model Controller).
 
 It’s a MVC built on top of EC (Entity Component).
 
