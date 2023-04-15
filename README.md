@@ -1,8 +1,6 @@
-# Hybrid ECS Pixelart Game [Unity Prototype]
+# Pixelart Game [Unity Prototype]
 
-I would like to introduce my architecture I called "VCS-AMC" (View Component System-Application Model Controller).
-
-It’s a MVC built on top of EC (Entity Component).
+The architecture provides a root entry point for creating and manipulating systems, holding and creating a map of all the systems, providing API to control the systems and manage dependencies, distributing all the necessary models, and enabling full control of the code flow and each part individually.
 
 **Watch a demo on youtube**
 [![CLICK HERE](https://user-images.githubusercontent.com/62396712/110776479-66e9c600-8260-11eb-931a-21947d7ec591.PNG)](https://www.youtube.com/watch?v=jgJFXI0sbnY)
