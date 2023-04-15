@@ -12,41 +12,36 @@ The image bellow shows the principle elements and the relationship among them.
 ![1](https://user-images.githubusercontent.com/62396712/110773737-58e67600-825d-11eb-8bd5-1d5909f88925.png)
 
 
-- **Application**: A root and a single entry point to create and manipulate systems.
+- **Application**: This is the root and single entry point for creating and manipulating systems in the architecture. It provides a central location for managing the different parts of the game.
 
-- **Controller**: Hold and create a map for all systems.
+- **Controller**: responsible for holding and creating a map of all the systems in the game. It provides an interface for accessing and managing these systems.
 
-- **GameSystem** : An Abstract class responsible of :
+- **GameSystem** : An abstract class that manages all the related GameComponent and GameView instances in the game. It is responsible for injecting dependencies through constructors, managing the game models, and distributing the necessary data to other parts of the game.
 
-       * Inject dependency through constructors.
-       * Manage all related "GameComponent" and "GameView" instances.
-       * Distribute all the necessary models.
+- **Model**: These are ScriptableObject sub-classes that hold data and configurations for all the different parts of the game. They provide a flexible and reusable way of storing game data.
 
-- **Model**: "ScriptableObject" sub-classes that hold the data and the configurations for all the game parts.
+- **SystemFacade**: acts as a dependencies container, providing an API for accessing and managing the different systems in the game. It also provides a central location for handling dependencies between different parts of the game.
 
-- **SystemFacade**: Systems’ API & Dependencies container.
+- **GameView**: is an entity that represents actors in the Unity space through a GameObject. It creates a map of the attached components and provides a way of accessing and manipulating them.
 
-- **GameView**:  Entity that represents actors in the unity space through a "GameObject" and creates a map for the attached components.
-
-- **GameComponent**: Reusable modules that are attached to “GameView” (entities) and contain all the behaviors.
+- **GameComponent**: These are reusable modules that are attached to GameView entities and contain all the different behaviors for that entity. They provide a way of adding functionality to the game without creating new entities or systems.
 
 ---
-An important part in this architecture is the "Facade Design Pattern", it takes charge of providing API to control systems or even play the role of the dependencies container and distribute systems instances.
+In this architecture, the "Facade Design Pattern" plays a crucial role by serving as an interface to provide an API for controlling systems and acting as the dependencies container. By encapsulating the complexity of the underlying system and exposing a simplified interface, the facade design pattern simplifies the client code's interaction with the system. Additionally, it provides a unified interface to access the subsystem's functionality, which can be utilized to create high-level functionality that builds on the subsystems.
 
 
 ![2](https://user-images.githubusercontent.com/62396712/110774291-ef1a9c00-825d-11eb-83b2-f894513c170a.png)
 
 ---
 
-We have a full control of the code flow and we can control each part individually. 
-This is an example to show how Tick function is called.
+we can have complete control over the code flow of the game and each individual part. For example, the "Tick" function, which is responsible for updating the state of the game, can be called at the appropriate time to ensure smooth gameplay. This level of control allows for greater flexibility and precision in game development, resulting in a more polished and optimized final product.
 
 ![3](https://user-images.githubusercontent.com/62396712/110775068-cba42100-825e-11eb-8c43-c23406627542.png)
 
 
 ---
 
-System and Component accessing is very handy and easy through generic methods.
+Accessing systems and components is made simple and convenient through the use of generic methods.
 
 ![4](https://user-images.githubusercontent.com/62396712/110775168-e8405900-825e-11eb-9ff7-ebf1da5e607a.png)
 
@@ -72,13 +67,13 @@ public T GetComponent<T> where T : GameComponent
 
 ---
 
-The following diagram shows GameView’s hierarchy and all its related components.
+This diagram provides an overview of the GameView hierarchy and its related components. It shows how the GameView entity represents actors in the Unity space through a GameObject and creates a map for the attached components.
 
 ![8](https://user-images.githubusercontent.com/62396712/110776025-e2974300-825f-11eb-828d-e8e2becd4a22.png)
 
 ---
 
-This diagram represents the responsible systems for each "GameComponent".
+This diagram provides an overview of the relationship between game components and systems. It shows which systems are responsible for managing each game component, providing a clear picture of the dependencies between the various parts of the architecture.
 
 
 ![9](https://user-images.githubusercontent.com/62396712/110776115-fb075d80-825f-11eb-8c81-136cbdc91919.png)
